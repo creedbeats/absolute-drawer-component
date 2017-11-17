@@ -8,6 +8,7 @@ export class DrawerContainer extends Component {
   static defaultProps = {
     isOpen: false,
     overlay: breakpoints.smallScreen > $(document).outerWidth() ? true : false,
+    push: breakpoints.smallScreen > $(document).outerWidth() ? false : true,
     drawerWidth: breakpoints.smallScreen > $(document).outerWidth() ? '100%' : '300px',
     options: {
       duration: 500,
@@ -26,7 +27,7 @@ export class DrawerContainer extends Component {
       options,
       drawerWidth,
       contentWidth,
-      overlay
+      push
     } = this.props;
     const instance = $(this.instance);
     const drawer = instance.find('.drawer');
@@ -34,7 +35,7 @@ export class DrawerContainer extends Component {
     drawer.animate({
       width: drawerWidth
     }, options);
-    if (!overlay) {
+    if (push) {
       drawerContent.animate({
         width: `-=${drawerWidth}`
       }, options);

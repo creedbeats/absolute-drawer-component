@@ -15,11 +15,11 @@
   position: relative;
   overflow: hidden;
   &.open {
-    // &.overlay {
-    //   &:after {
-    //     @include backdrop;
-    //   }
-    // }
+    &.overlay {
+      &:after {
+        @include backdrop;
+      }
+    }
   }
   .drawer-content {
     transition: none;
